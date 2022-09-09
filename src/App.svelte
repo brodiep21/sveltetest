@@ -1,10 +1,26 @@
 <script>
-	export let name;
+ let first = 'E';
+ let last  = 'Swick' ;
+ $: fullname = `${first} ${last}`;
+ let color = 'black';
+
+ const handleClick = () => {
+	color = 'orange';
+ };
+
+const input = (e) => {
+	color = e.target.value ;
+}
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<h1 style = "color: {color}">Hello {fullname}!</h1>
+	<!-- <p style="color: {color}">{color}</p> -->
+	<button on:click= {handleClick}>update belt color</button>
+	<input type= "text" on:input= {input} bind:value={color}>
+	<input type= "text" bind:value={first}>
+	<input type= "text" bind:value={last}>
+	<!-- <img src="/home/bp21/template/public/sus-fry.gif" alt="fry squinting"> -->
 </main>
 
 <style>
@@ -16,7 +32,6 @@
 	}
 
 	h1 {
-		color: #ff3e00;
 		text-transform: uppercase;
 		font-size: 4em;
 		font-weight: 100;
