@@ -1,8 +1,10 @@
 <script>
- let first = 'E';
- let last  = 'Swick' ;
+ let first = 'B';
+ let last  = 'Peif' ;
  $: fullname = `${first} ${last}`;
  let color = 'black';
+//  import sus-fry.gif from './sus-fry.gif'
+ let fry = '/sus-fry.gif';
 
  const handleClick = () => {
 	color = 'orange';
@@ -20,7 +22,7 @@ const input = (e) => {
 	<input type= "text" on:input= {input} bind:value={color}>
 	<input type= "text" bind:value={first}>
 	<input type= "text" bind:value={last}>
-	<!-- <img src="/home/bp21/template/public/sus-fry.gif" alt="fry squinting"> -->
+	<br><img {fry} alt="fry squinting">
 </main>
 
 <style>
