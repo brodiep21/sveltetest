@@ -42,7 +42,7 @@ const typingVal = (e) => {
 		<div>
 			<h4>{person.name}</h4>
 			<p>{person.age} years old, {person.color} belt.</p>
-			//wrap the event in the object so that it doesn't automatically run when the each loop is ran
+			//wrap the event in the object so that it doesn't trigger automatically when the each loop is ran
 			<button on:click={() => handleClick(person.id)}>Delete</button>
 		</div>
 		{:else}
