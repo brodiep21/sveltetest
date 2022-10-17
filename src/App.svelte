@@ -3,6 +3,7 @@
  let first = 'B';
  let last  = 'Peif' ;
  $: fullname = `${first} ${last}`;
+ let showModal = false;
  let people = [
 	{name: 'Brodie', color: 'orange', age: 32, id: 1},
 	{name: 'Conner', color: 'blue', age: 31, id: 2},
@@ -23,13 +24,13 @@
 const typingVal = (e) => {
 	color = e.target.value ;
 }
+const toggleModal = () => {
+	showModal = !showModal;
+}
 </script>
-<Modal/>
-<!-- {#if num > 20}
-<p>Greater than 20</p>
-{:else if num > 5}
-<p>Greater Than 5</p>
-{/if} -->
+<!-- <Modal/> -->
+
+<Modal message="Hey, I am a prop" {showModal} on:click={toggleModal}/>
 <main>
 	<h1 style = "color: {color}">Hello {fullname}!</h1>
 	<!-- <p style="color: {color}">{color}</p> -->
@@ -38,11 +39,12 @@ const typingVal = (e) => {
 	<input type= "text" bind:value={first}>
 	<input type= "text" bind:value={last}>
 	<div>
+		<button on:click={toggleModal}>Open Modal</button> 
 		{#each people as person (person.id)}
 		<div>
 			<h4>{person.name}</h4>
 			<p>{person.age} years old, {person.color} belt.</p>
-			//wrap the event in the object so that it doesn't trigger automatically when the each loop is ran
+			<!-- //wrap the event in the object so that it doesn't trigger automatically when the each loop is ran -->
 			<button on:click={() => handleClick(person.id)}>Delete</button>
 		</div>
 		{:else}
